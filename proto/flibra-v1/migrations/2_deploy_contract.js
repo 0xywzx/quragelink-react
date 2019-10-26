@@ -1,5 +1,5 @@
-var Greeter = artifacts.require("./Greeter.sol");
+var fLibra = artifacts.require("./FLibra.sol");
 
 module.exports = function(deployer) {
-  deployer.deploy(Greeter);
+  deployer.deploy(fLibra);
 };

@@ -1,0 +1,20 @@
+{
+  "extends": "@nuxt/typescript",
+  "compilerOptions": {
+    "lib": [
+      "es2018",
+      "dom"
+    ],
+    "skipLibCheck": true,
+    "baseUrl": ".",
+    "types": [
+      "node",
+      "@types/node",
+      "@types/jest",
+      "@nuxt/vue-app"
+    ]
+  },
+  "exclude": [
+    "./node_modules"
+  ]
+}

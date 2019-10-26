@@ -9,19 +9,55 @@
 }
 
 .App-header {
-  background-color: #282c34;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+/* ------------ 新規作成 画面 --------------- */
+
+.icon-header {
+  text-align: center;
 }
+
+.libraFreeMarketIcon {
+  width: 30%;
+  margin: 30px;
+}
+
+.create-user {
+  text-align: center;
+}
+
+.title-text {
+  margin: 0 auto; 
+  width: 70%;
+  border-bottom: 1px solid grey;
+}
+
+.localData {
+  padding-top: 20px; 
+  padding-bottom: 20px;
+  margin: 0 auto; 
+  width: 70%;
+  border-top: 1px solid grey;
+  border-bottom: 1px solid grey;
+}
+
+.mnemonic {
+  margin: 0 auto; 
+  width: 100%;
+}
+
+/* ------------ Login 画面 --------------- */
+.text-mnemonic {
+  width:300px;
+  height:200px; 
+}
+
 
 @keyframes App-logo-spin {
   from {
@@ -30,4 +66,13 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+/* ------------ User 画面 --------------- */
+.card {
+  width: 17%;
+  height: 50%;
+  float: left;
+  margin-left: 5px;
+  margin-bottom: 5px;
 }

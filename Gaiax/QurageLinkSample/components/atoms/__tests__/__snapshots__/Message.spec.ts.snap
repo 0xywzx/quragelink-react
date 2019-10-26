@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Message.vue should to match snapshot 1`] = `
+<div>
+  
+  0x5c0bA9fC40f672932FaC478ca8B69d855C922675: Hello, World!
+  <br />
+</div>
+`;

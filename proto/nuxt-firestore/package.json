@@ -1,0 +1,17 @@
+{
+  "name": "nuxt-firestore",
+  "version": "1.0.0",
+  "description": "My polished Nuxt.js project",
+  "author": "yosuke.aramaki",
+  "private": true,
+  "scripts": {
+    "dev": "nuxt",
+    "build": "nuxt build",
+    "start": "nuxt start",
+    "generate": "nuxt generate"
+  },
+  "dependencies": {
+    "nuxt": "^2.0.0"
+  },
+  "devDependencies": {}
+}

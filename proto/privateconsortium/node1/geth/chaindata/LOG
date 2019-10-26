@@ -1,0 +1,92 @@
+=============== Sep 28, 2019 (JST) ===============
+13:43:26.404839 log@legend F·NumFile S·FileSize N·Entry C·BadEntry B·BadBlock Ke·KeyError D·DroppedEntry L·Level Q·SeqNum T·TimeElapsed
+13:43:26.406378 db@open opening
+13:43:26.411628 version@stat F·[] S·0B[] Sc·[]
+13:43:26.412561 db@janitor F·2 G·0
+13:43:26.412729 db@open done T·6.32429ms
+=============== Sep 28, 2019 (JST) ===============
+13:43:34.216255 log@legend F·NumFile S·FileSize N·Entry C·BadEntry B·BadBlock Ke·KeyError D·DroppedEntry L·Level Q·SeqNum T·TimeElapsed
+13:43:34.217607 version@stat F·[] S·0B[] Sc·[]
+13:43:34.217647 db@open opening
+13:43:34.217742 journal@recovery F·1
+13:43:34.221024 journal@recovery recovering @1
+13:43:34.224298 memdb@flush created L0@2 N·622 S·50KiB "\x02d\xfc..\x19Ba,v431":"\xfe\x88\xcf..H\xef\xcc,v362"
+13:43:34.228612 version@stat F·[1] S·50KiB[50KiB] Sc·[0.25]
+13:43:34.230967 db@janitor F·3 G·0
+13:43:34.231136 db@open done T·13.437044ms
+=============== Oct 1, 2019 (JST) ===============
+14:18:34.179507 db@close closing
+14:18:34.181347 db@close done T·2.241751ms
+=============== Oct 1, 2019 (JST) ===============
+14:18:36.976367 log@legend F·NumFile S·FileSize N·Entry C·BadEntry B·BadBlock Ke·KeyError D·DroppedEntry L·Level Q·SeqNum T·TimeElapsed
+14:18:36.988481 version@stat F·[1] S·50KiB[50KiB] Sc·[0.25]
+14:18:36.988555 db@open opening
+14:18:36.988751 journal@recovery F·1
+14:18:37.006873 journal@recovery recovering @3
+14:18:39.525594 memdb@flush created L0@5 N·175013 S·8MiB "\x01Y\x8d..\xf1M\x89,v175620":"\xff\x11\xc0..7=\x91,v175610"
+14:18:39.533578 version@stat F·[2] S·8MiB[8MiB] Sc·[0.50]
+14:18:39.711651 db@janitor F·4 G·0
+14:18:39.711724 db@open done T·2.723064791s
+14:30:28.003855 table@compaction L0·2 -> L1·0 S·8MiB Q·176769
+14:30:28.139490 table@build created L1@8 N·51919 S·2MiB "\x01Y\x8d..\xf1M\x89,v175620":"h\x00\x00..\xab>\xc3,v20128"
+14:30:28.235622 table@build created L1@9 N·30672 S·2MiB "h\x00\x00..>\xc3t,v20125":"h\x00\x00..\xdfp\xdf,v116270"
+14:30:28.314501 table@build created L1@10 N·37464 S·2MiB "h\x00\x00..p\xdft,v116267":"\xff\x11\xc0..7=\x91,v175610"
+14:30:28.314619 version@stat F·[0 3] S·6MiB[0B 6MiB] Sc·[0.00 0.06]
+14:30:28.317658 table@compaction committed F+1 S-2MiB Ke·0 D·55580 T·313.232595ms
+14:30:28.350352 table@remove removed @5
+14:30:28.351166 table@remove removed @2
+=============== Oct 2, 2019 (JST) ===============
+09:43:57.044417 db@close closing
+09:43:57.047429 db@close done T·4.06682ms
+=============== Oct 2, 2019 (JST) ===============
+12:06:33.998534 log@legend F·NumFile S·FileSize N·Entry C·BadEntry B·BadBlock Ke·KeyError D·DroppedEntry L·Level Q·SeqNum T·TimeElapsed
+12:06:34.002259 version@stat F·[0 3] S·6MiB[0B 6MiB] Sc·[0.00 0.06]
+12:06:34.002334 db@open opening
+12:06:34.002559 journal@recovery F·1
+12:06:34.019154 journal@recovery recovering @6
+12:06:34.201374 memdb@flush created L0@11 N·41257 S·1MiB "\x03\xb1y..\x93\x8dg,v216886":"\xedܷ..8U,,v216870"
+12:06:34.207111 version@stat F·[1 3] S·8MiB[1MiB 6MiB] Sc·[0.25 0.06]
+12:06:34.281849 db@janitor F·6 G·0
+12:06:34.282078 db@open done T·279.697635ms
+12:13:24.000925 table@compaction L0·1 -> L1·3 S·8MiB Q·217419
+12:13:24.134749 table@build created L1@14 N·57052 S·2MiB "\x01Y\x8d..\xf1M\x89,v175620":"h\x00\x00..\xdc&\x95,v3196"
+12:13:24.264172 table@build created L1@15 N·30673 S·2MiB "h\x00\x00..&\x95t,v3193":"h\x00\x00..\xe6,K,v99339"
+12:13:25.028350 table@build created L1@16 N·30653 S·2MiB "h\x00\x00..,Kt,v99336":"h\x00\x00..\u007f\xe8_,v195470"
+12:13:25.127746 table@build created L1@17 N·29884 S·1MiB "h\x00\x00..\xe8_t,v195467":"\xff\x11\xc0..7=\x91,v175610"
+12:13:25.127904 version@stat F·[0 4] S·7MiB[0B 7MiB] Sc·[0.00 0.08]
+12:13:25.130829 table@compaction committed F~ S-537KiB Ke·0 D·13050 T·1.128197378s
+12:13:25.134597 table@remove removed @11
+12:13:25.137345 table@remove removed @8
+12:13:25.138761 table@remove removed @9
+12:13:25.143611 table@remove removed @10
+=============== Oct 5, 2019 (JST) ===============
+17:36:19.983002 db@close closing
+17:36:19.983781 db@close done T·822.149µs
+=============== Oct 7, 2019 (JST) ===============
+11:02:43.902673 log@legend F·NumFile S·FileSize N·Entry C·BadEntry B·BadBlock Ke·KeyError D·DroppedEntry L·Level Q·SeqNum T·TimeElapsed
+11:02:43.915182 version@stat F·[0 4] S·7MiB[0B 7MiB] Sc·[0.00 0.08]
+11:02:43.915392 db@open opening
+11:02:43.916510 journal@recovery F·1
+11:02:43.933571 journal@recovery recovering @12
+11:02:44.703301 memdb@flush created L0@18 N·162336 S·7MiB "\x01Y\x8d..\xf1M\x89,v379223":"\xdb\v\x9a..\xdc\xca\x1a,v379227"
+11:02:44.711179 version@stat F·[1 4] S·15MiB[7MiB 7MiB] Sc·[0.25 0.08]
+11:02:44.847967 db@janitor F·7 G·0
+11:02:44.848311 db@open done T·932.814745ms
+11:22:37.006925 table@compaction L0·1 -> L1·4 S·15MiB Q·381292
+11:22:37.137893 table@build created L1@21 N·62323 S·2MiB "\x01Y\x8d..\xf1M\x89,v379223":"b\x00\x00..\xf1\x88;,v34130"
+11:22:37.213977 table@build created L1@22 N·45596 S·2MiB "b\x00\x00..\x9fr\x8f,v34139":"h\x00\x00..\xe7W\xf2,v28435"
+11:22:37.307755 table@build created L1@23 N·30691 S·2MiB "h\x00\x00..W\xf2t,v28432":"h\x00\x00..\x8d\x89],v126673"
+11:22:37.434297 table@build created L1@24 N·30635 S·2MiB "h\x00\x00..\x89]t,v126670":"h\x00\x00..0\xbbR,v222819"
+11:22:37.515072 table@build created L1@25 N·30636 S·2MiB "h\x00\x00..\xbbRt,v222816":"h\x00\x00..\xac\x1e\x02,v320887"
+11:22:37.591783 table@build created L1@26 N·39351 S·2MiB "h\x00\x00..\x1e\x02t,v320884":"r\x00\x00..\x89\xf6_,v193806"
+11:22:37.622860 table@build created L1@27 N·19993 S·830KiB "r\x00\x00..\x11=k,v193815":"\xff\x11\xc0..7=\x91,v175610"
+11:22:37.622967 version@stat F·[0 7] S·13MiB[0B 13MiB] Sc·[0.00 0.14]
+11:22:37.624301 table@compaction committed F+2 S-2MiB Ke·0 D·51373 T·616.384473ms
+11:22:37.636345 table@remove removed @18
+11:22:37.639257 table@remove removed @14
+11:22:37.641423 table@remove removed @15
+11:22:37.645057 table@remove removed @16
+11:22:37.646696 table@remove removed @17
+=============== Oct 16, 2019 (JST) ===============
+20:41:02.113335 db@close closing
+20:41:02.114966 db@close done T·1.975988ms

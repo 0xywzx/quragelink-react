@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CardTitle.vue should to match snapshot 1`] = `
+<p
+  class="card-header-title"
+>
+  title text
+</p>
+`;

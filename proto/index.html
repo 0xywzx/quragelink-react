@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Title</title>
+</head>
+
+<style>
+  .alert {
+    background-color: #fcc;
+    padding: 10px;
+    border: 1px solid #f33;
+  }
+</style>
+
+<body>
+  <div id="app">
+    <alert-box></alert-box>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.15/lodash.min.js"></script>
+
+  <script>
+    Vue.component('alert-box' , {
+      template: `
+       <div class="alert" v-on:click="caution">
+        <strong>error!</strong>
+        <slot></slot>
+      </div>`,
+      methods: {
+        caution: function() {
+          alert('クリックされました');
+        }
+      }
+    })
+    var app = new Vue({
+      el: "#app",
+    })
+  </script>
+</body>
+</html>

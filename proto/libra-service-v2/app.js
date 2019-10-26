@@ -1,4 +1,6 @@
 require('dotenv').config()
+global.atob = require("atob");
+
 const AMOUNT_TO_MINT = process.env.AMOUNT_TO_MINT || 100
 
 const express = require('express')
@@ -34,18 +36,20 @@ app.post('/createWallet', async (req, res) => {
     const createdResult = await libra.createWallet(AMOUNT_TO_MINT)
 
     // Mint
-    const faucent = new Faucent()
-    if (USE_KULAP_FAUCET) {
-      await faucent.getFaucetFromKulap(AMOUNT_TO_MINT, createdResult.address)
-    } else {
-      await faucent.getFaucetFromLibraTestnet(AMOUNT_TO_MINT, createdResult.address)
-    }
+    const faucent = await new Faucent()
+    await faucent.getFaucetFromLibraTestnet(AMOUNT_TO_MINT, createdResult.address)
+    
 
     const wallet = {
       address: createdResult.address,
       mnemonic: createdResult.mnemonic,
       balance: AMOUNT_TO_MINT.toString(10)
     }
+
+    // // Mint
+    // await client.mintWithFaucetService(createdResult.address, 10e8)
+    // //await libra.mint(createdResult.address, 1000e6) 
+
     console.log('wallet', wallet)
     res.send(wallet)
 

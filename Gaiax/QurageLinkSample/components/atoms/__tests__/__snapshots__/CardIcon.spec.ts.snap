@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CardIcon.vue should to match snapshot 1`] = `
+<a
+  aria-label="more options"
+  class="card-header-icon"
+  href="#"
+>
+  <span
+    class="icon"
+  >
+    <i
+      aria-hidden="true"
+      class="fas fa-angle-down"
+    />
+  </span>
+</a>
+`;

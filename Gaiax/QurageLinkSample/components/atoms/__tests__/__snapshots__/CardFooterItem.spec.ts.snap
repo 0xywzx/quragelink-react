@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CardFooterItem.vue should to match snapshot 1`] = `
+<a
+  class="card-footer-item"
+  href="#"
+>
+  test content
+</a>
+`;

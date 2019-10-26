@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TextInfo.vue should to match snapshot 1`] = `
+<p
+  class="has-text-success"
+>
+  test text
+</p>
+`;

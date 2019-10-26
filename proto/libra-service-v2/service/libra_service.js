@@ -1,5 +1,8 @@
 const BigNumber = require('bignumber.js')
-const {LibraClient, LibraNetwork, Account, LibraWallet, LibraAdmissionControlStatus } = require('libra-core')
+global.atob = require("atob");
+
+//const {LibraClient, LibraNetwork, Account, LibraWallet, LibraAdmissionControlStatus } = require('libra-core')
+const { LibraClient, LibraNetwork, Account, LibraWallet, LibraAdmissionControlStatus } = require('kulap-libra')
 
 class Libra {
   constructor () {
@@ -30,6 +33,7 @@ class Libra {
       address: account.getAddress().toHex(),
       mnemonic: wallet.config.mnemonic
     }
+
   }
 
   async login(mnemonic) {
@@ -51,7 +55,7 @@ class Libra {
     const wallet = new LibraWallet({
       mnemonic: mnemonic
     })
-    const account = wallet.generateAccount(0)
+    const account = wallet.newAccount()
     const amountToTransfer = BigNumber(amount).times(1e6)
 
     // Stamp account state before transfering
@@ -59,18 +63,19 @@ class Libra {
 
     // Transfer
     const response = await client.transferCoins(account, toAddress, amountToTransfer)
-    if (response.acStatus !== LibraAdmissionControlStatus.ACCEPTED) {
-      console.log(JSON.stringify(response))
-      throw new Error(`admission_control failed with status ${LibraAdmissionControlStatus[response.acStatus]}`)
-    }
+    // await response.awaitConfirmation(client);
+    // if (response.acStatus !== LibraAdmissionControlStatus.ACCEPTED) {
+    //   console.log(JSON.stringify(response))
+    //   throw new Error(`admission_control failed with status ${LibraAdmissionControlStatus[response.acStatus]}`)
+    // }
 
-    // Ensure sender account balance was reduced accordingly
-    await response.awaitConfirmation(client)
-    const afterAccountState = await client.getAccountState(account.getAddress())
-    if (afterAccountState.balance.toString(10) !== beforeAccountState.balance.minus(amountToTransfer).toString(10)) {
-      console.log(JSON.stringify(response))
-      throw new Error(`transfer failed`)
-    }
+    // // Ensure sender account balance was reduced accordingly
+    // await response.awaitConfirmation(client)
+    // const afterAccountState = await client.getAccountState(account.getAddress())
+    // if (afterAccountState.balance.toString(10) !== beforeAccountState.balance.minus(amountToTransfer).toString(10)) {
+    //   console.log(JSON.stringify(response))
+    //   throw new Error(`transfer failed`)
+    // }
     
     return {
       response: response,

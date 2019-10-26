@@ -1,68 +1,200 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# f Libra
 
-## Available Scripts
+## Build fLibra private chain
 
-In the project directory, you can run:
+### Set up Geth
 
-### `npm start`
+Install ethereum
+```
+brew tap ethereum/ethereum
+brew install ethereum
+```
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Make `flibrachain` directory, and create a geth account for development
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+```
+$ geth account new --datadir ./flibrachain/node1
+```
+```
+NFO [12-20|11:37:00.688] Maximum peer count                       ETH=25 LES=0 total=25
+Your new account is locked with a password. Please give a password. Do not forget this password.
+Passphrase:
+Repeat passphrase:
+Address: {4d8c003c1dc28a28a323873752e2b07c2cf3d413}
+```
 
-### `npm test`
+### Generate the genecis block
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```
+$ cd flibrachain
+$ puppeth
+```
 
-### `npm run build`
+Set a network name. In this case, I named "flibrachain"
+```
+Please specify a network name to administer (no spaces, hyphens or capital letters please)
+>flibrachain
+```
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Type "2" to generate new genecis block. 
+```
+What would you like to do? (default = stats)
+ 1. Show network stats
+ 2. Configure new genesis
+ 3. Track new remote server
+ 4. Deploy network components
+> 2
+```
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+Type "1".
+```
+What would you like to do? (default = create)
+ 1. Create new genesis from scratch
+ 2. Import already existing genesis
+> 1
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Type "2" to choose PoA consensus algorithm.
+```
+Which consensus engine to use? (default = clique)
+1. Ethash - proof-of-work
+2. Clique - proof-of-authority
+> 2
+```
 
-### `npm run eject`
+```
+How many seconds should blocks take? (default = 15)
+> 5
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Type the address that you created before, and press enter twice.
+```
+Which accounts are allowed to seal? (mandatory at least one)
+> 0x4d8c003c1dc28a28a323873752e2b07c2cf3d413
+> 0x
+```
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Again
+```
+Which accounts should be pre-funded? (advisable at least one)
+> 0x4d8c003c1dc28a28a323873752e2b07c2cf3d413
+> 0x
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+```
+Should the precompile-addresses (0x1 .. 0xff) be pre-funded with 1 wei? (advisable yes)
+> yes
+```
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+Type network id. 
+```
+Specify your chain/network ID if you want an explicit one (default = random)
+>1515
+```
 
-## Learn More
+Next, type "2" to manage genecis block.
+```
+What would you like to do? (default = stats)
+1. Show network stats
+2. Manage existing genesis
+3. Track new remote server
+4. Deploy network components
+> 2
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Then, export information of genesis block
+```
+ 1. Modify existing fork rules
+ 2. Export genesis configurations
+ 3. Remove genesis configuration
+> 2
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+If you don't mind where those will be save, press enter.
+```
+Which folder to save the genesis specs into? (default = current)
+  Will create flibrachain/.json, flibrachain/-aleth.json, flibrachain/-harmony.json, flibrachain/-parity.json
+>
+```
 
-### Code Splitting
+```
+IINFO [12-20|22:54:03.661] Saved native genesis chain spec          path=privateconsortium.json
+ERROR[12-20|22:54:03.662] Failed to create Aleth chain spec        err="unsupported consensus engine"
+ERROR[12-20|22:54:03.662] Failed to create Parity chain spec       err="unsupported consensus engine"
+INFO [12-20|22:54:03.663] Saved genesis chain spec                 client=harmony path=privateconsortium-harmony.json
+```
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+### Start a network
 
-### Analyzing the Bundle Size
+Initialize a node.
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+```
+$ cd flibrachain
+$ geth --datadir node1 init flibrachain.json
+```
 
-### Making a Progressive Web App
+Start up geth
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+```
+geth --datadir node1/ --syncmode 'full' --port 30311 --rpc --rpcaddr '0.0.0.0' --rpcport 8545 --rpccorsdomain "*" --rpcvhosts "*" --rpcapi 'personal,db,eth,net,web3,txpool,miner'  --networkid 1515 --gasprice '0'
+```
 
-### Advanced Configuration
+In another terminal, start mining to build blockchain
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+```
+$ cd flibrachain
+$ geth attach ipc:node1/geth.ipc
+Welcome to the Geth JavaScript console!
+```
 
-### Deployment
+Unlock your account
+```
+> personal.unlockAccount(eth.coinbase,"Password",0)
+true
+```
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
+Set default account
+```
+> eth.defaultAccount = eth.coinbase
+0x4d8c003c1dc28a28a323873752e2b07c2cf3d413
+```
 
-### `npm run build` fails to minify
+Start mining
+```
+> miner.start()
+null
+```
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+You can see how many blocks blockchain has like this.
+```
+eth.blockNumber
+```
+
+## Deploy contract to block chain
+
+I recommend you to use `node v11.14.0` and `npm 6.7.0`
+
+```
+$ nvm install 11.14.0
+$ nvm use  11.14.0
+Now using node v11.14.0 (npm v6.7.0)
+```
+
+Clone the project and install dependencies
+```
+$ git clone 
+$ cd flibra-v1
+$ npm i
+```
+
+Deploy contract to private chain
+```
+$ truffle console --network local 
+truffle(local)> migrate --reset
+```
+
+## Run the app
+
+```
+$ npm start
+```
